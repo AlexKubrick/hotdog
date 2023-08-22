@@ -1,14 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".SummaryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/order_summary" />
+    <data>
 
-</FrameLayout>
+        <variable
+            name="viewModel"
+            type="ru.alexkubrick.hotdog.model.HotdogOrderViewModel" />
+
+        <variable
+            name="summaryFragment"
+            type="ru.alexkubrick.hotdog.SummaryFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/side_margin">
+
+            <TextView
+                android:id="@+id/quantity_title_summary"
+                style="@style/Widget.Hotdog.TextView.OrderSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quantity"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/quantity_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/order_summary_margin"
+                android:text="@{viewModel.quantity.toString()}"
+                android:textColor="@color/black"
+                tools:text="1 hotdog" />
+
+            <View
+                android:id="@+id/divider1"
+                style="@style/Widget.Hotdog.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_marginBottom="@dimen/side_margin" />
+
+            <TextView
+                android:id="@+id/flavor_title_summary"
+                style="@style/Widget.Hotdog.TextView.OrderSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/flavor"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/flavor_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/order_summary_margin"
+                android:textColor="@color/black"
+                tools:text="Mustard" />
+
+            <View
+                android:id="@+id/divider2"
+                style="@style/Widget.Hotdog.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_marginBottom="@dimen/side_margin" />
+
+            <TextView
+                android:id="@+id/date_title_summary"
+                style="@style/Widget.Hotdog.TextView.OrderSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pickup_date"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/date_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/order_summary_margin"
+                android:textColor="@color/black"
+                tools:text="Sunday" />
+
+            <View
+                android:id="@+id/divider3"
+                style="@style/Widget.Hotdog.Divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_marginBottom="@dimen/side_margin" />
+
+            <TextView
+                android:id="@+id/total"
+                style="@style/Widget.Hotdog.TextView.FinalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/side_margin"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/padding"
+                android:textColor="@color/black"
+                android:text="@{@string/total_price(viewModel.price)}"
+                tools:text="Total 5.00"
+                />
+
+
+            <Button
+                android:id="@+id/send_summary"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/side_margin"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/padding"
+                android:text="@string/send"
+                app:backgroundTint="@color/red_pink"/>
+
+            <Button
+                android:id="@+id/cancel_summary"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/side_margin"
+                android:layout_marginTop="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/padding"
+                android:text="@string/cancel"
+                android:textColor="@color/black" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

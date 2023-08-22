@@ -5,17 +5,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".FlavorFragment">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <!--RecyclerView-->
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/side_margin"
+            android:layout_marginTop="@dimen/side_margin"
+            android:layout_marginEnd="@dimen/side_margin"
+            android:layout_marginBottom="@dimen/side_margin"
+            android:gravity="center"
+            android:text="@string/choose_flavor" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/items_list"/>
+            tools:listitem="@layout/items_list">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 
