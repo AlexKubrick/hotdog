@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_startFragment_to_flavorFragment"
             app:destination="@id/flavorFragment" />
-        <action
-            android:id="@+id/action_startFragment_self"
-            app:destination="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/flavorFragment"

@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import ru.alexkubrick.hotdog.databinding.FragmentPickupBinding
+import ru.alexkubrick.hotdog.databinding.FragmentSummaryBinding
 import ru.alexkubrick.hotdog.model.HotdogOrderViewModel
 
 
 class SummaryFragment : Fragment() {
-    private var binding: FragmentPickupBinding? = null
+    private var binding: FragmentSummaryBinding? = null
     private val sharedViewModel: HotdogOrderViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +22,7 @@ class SummaryFragment : Fragment() {
         binding?.apply {
             viewModel = sharedViewModel
             lifecycleOwner = viewLifecycleOwner
-//            summaryFragment = this@SummaryFragment //unresolved reference
+            summaryFragment = this@SummaryFragment
 
         }
     }
@@ -30,9 +30,14 @@ class SummaryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        val fragmentBinding = FragmentPickupBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentSummaryBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 
 

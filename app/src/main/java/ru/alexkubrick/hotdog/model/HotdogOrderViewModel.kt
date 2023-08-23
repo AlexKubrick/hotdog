@@ -1,13 +1,13 @@
 package ru.alexkubrick.hotdog.model
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.Calendar
-//import androidx.lifecycle.Transformations // не работает -- unresolved reference
-import java.text.NumberFormat
 
 private const val PRICE_PER_HOTDOG = 150.00
 
@@ -21,12 +21,17 @@ class HotdogOrderViewModel: ViewModel() {
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
 
-    private val _price = MutableLiveData<Double>()
-    val price: LiveData<Double> = _price
+    //https://proandroiddev.com/livedata-transformations-4f120ac046fc
+    //https://stackoverflow.com/questions/46930335/what-is-difference-between-mediatorlivedata-and-mutablelivedata-in-mvvm
+    //https://stackoverflow.com/questions/75465435/unresolved-reference-transformations-after-upgrading-lifecycle-dependency
+    // https://stackoverflow.com/questions/76571539/transformations-not-importing-in-android-studio
 
-//    val price: LiveData<String> = Transformations.map(_price) { // не работает -- unresolved reference
-//        NumberFormat.getCurrencyInstance().format(it)
-//    }
+    private val _price = MutableLiveData<Double>()
+    val price = MediatorLiveData<String>().apply {
+        addSource(_price) {
+            value = NumberFormat.getCurrencyInstance().format(it)
+        }
+    }
 
     fun setQuantity(numberCupcakes: Int) {
         _quantity.value = numberCupcakes
@@ -66,7 +71,6 @@ class HotdogOrderViewModel: ViewModel() {
     }
 
     init {
-        // Set initial values for the order
         resetOrder()
     }
 

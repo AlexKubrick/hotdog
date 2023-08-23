@@ -22,7 +22,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import ru.alexkubrick.hotdog.R
 import ru.alexkubrick.hotdog.databinding.FragmentPickupBinding
 import ru.alexkubrick.hotdog.model.HotdogOrderViewModel
 
@@ -52,7 +51,7 @@ class PickupFragment : Fragment() {
         }
     }
 
-    fun goToNextScreen() { // не работает -- причина неизвестна.
+    fun goToNextScreen() {
         findNavController().navigate(R.id.action_pickupFragment_to_summaryFragment)
     }
 
