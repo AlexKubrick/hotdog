@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.alexkubrick.hotdog.R
 import ru.alexkubrick.hotdog.model.Hotdog
-import ru.alexkubrick.hotdog.model.HotdogOrderViewModel
 
 class ItemAdapter(
     private val context: Context,
@@ -52,5 +51,4 @@ class ItemAdapter(
     interface OnClickListener {
         fun onClick(position: Int, model: Hotdog)
     }
-
 }

@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,13 +12,10 @@ import ru.alexkubrick.hotdog.adapter.ItemAdapter
 import ru.alexkubrick.hotdog.data.Data
 import ru.alexkubrick.hotdog.databinding.FragmentFlavorBinding
 import ru.alexkubrick.hotdog.model.Hotdog
-import ru.alexkubrick.hotdog.model.HotdogOrderViewModel
 
 
 class FlavorFragment : Fragment() {
     private var binding: FragmentFlavorBinding? = null
-    private val sharedViewModel: HotdogOrderViewModel by activityViewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

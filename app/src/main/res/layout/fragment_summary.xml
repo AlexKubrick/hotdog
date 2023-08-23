@@ -93,8 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/order_summary_margin"
-                android:textColor="@color/black"
                 android:text="@{viewModel.date.toString()}"
+                android:textColor="@color/black"
                 tools:text="Sunday" />
 
             <View
@@ -114,10 +114,9 @@
                 android:layout_marginStart="@dimen/side_margin"
                 android:layout_marginTop="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/padding"
-                android:textColor="@color/black"
                 android:text="@{@string/total_price(viewModel.price)}"
-                tools:text="Total 5.00"
-                />
+                android:textColor="@color/black"
+                tools:text="Total 5.00" />
 
 
             <Button
@@ -129,7 +128,8 @@
                 android:layout_marginTop="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/padding"
                 android:text="@string/send"
-                app:backgroundTint="@color/red_pink"/>
+                android:onClick="@{() -> summaryFragment.sendOrder()}"
+                app:backgroundTint="@color/red_pink" />
 
             <Button
                 android:id="@+id/cancel_summary"
@@ -139,6 +139,7 @@
                 android:layout_marginStart="@dimen/side_margin"
                 android:layout_marginTop="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/padding"
+                android:onClick="@{() -> summaryFragment.cancelOrder()}"
                 android:text="@string/cancel"
                 android:textColor="@color/black" />
 

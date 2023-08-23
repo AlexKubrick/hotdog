@@ -24,7 +24,6 @@ class HotdogOrderViewModel: ViewModel() {
     //https://proandroiddev.com/livedata-transformations-4f120ac046fc
     //https://stackoverflow.com/questions/46930335/what-is-difference-between-mediatorlivedata-and-mutablelivedata-in-mvvm
     //https://stackoverflow.com/questions/75465435/unresolved-reference-transformations-after-upgrading-lifecycle-dependency
-    // https://stackoverflow.com/questions/76571539/transformations-not-importing-in-android-studio
 
     private val _price = MutableLiveData<Double>()
     val price = MediatorLiveData<String>().apply {

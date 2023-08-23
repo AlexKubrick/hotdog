@@ -51,6 +51,10 @@ class PickupFragment : Fragment() {
         }
     }
 
+    fun cancelOrder() {
+        findNavController().navigate(R.id.action_pickupFragment_to_startFragment)
+    }
+
     fun goToNextScreen() {
         findNavController().navigate(R.id.action_pickupFragment_to_summaryFragment)
     }
