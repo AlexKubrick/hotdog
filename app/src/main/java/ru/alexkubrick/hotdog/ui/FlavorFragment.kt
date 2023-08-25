@@ -1,4 +1,4 @@
-package ru.alexkubrick.hotdog
+package ru.alexkubrick.hotdog.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ru.alexkubrick.hotdog.R
 import ru.alexkubrick.hotdog.adapter.ItemAdapter
-import ru.alexkubrick.hotdog.data.Data
+import ru.alexkubrick.hotdog.data.RecyclerData
 import ru.alexkubrick.hotdog.databinding.FragmentFlavorBinding
-import ru.alexkubrick.hotdog.model.Hotdog
+import ru.alexkubrick.hotdog.data.HotdogDataClass
 
 
 class FlavorFragment : Fragment() {
@@ -33,7 +34,7 @@ class FlavorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val hotdogList = Data().loadHotDog()
+        val hotdogList = RecyclerData().loadHotDog()
         val itemAdapter = ItemAdapter(requireContext(), hotdogList)
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recycleView) // возможно ли переписать эту строку через binding?
@@ -43,7 +44,7 @@ class FlavorFragment : Fragment() {
         recyclerView.adapter = itemAdapter
 
         itemAdapter.setOnClickListener(object : ItemAdapter.OnClickListener {
-            override fun onClick(position: Int, model: Hotdog) {
+            override fun onClick(position: Int, model: HotdogDataClass) {
                 // Navigate to the next screen (fragment)
                 findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
             }

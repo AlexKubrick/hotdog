@@ -47,7 +47,7 @@ class HotdogOrderViewModel: ViewModel() {
 
     val dateOptions = getPickupDate()
 
-//    fun handleItemClick(item: Hotdog) { // не знаю как из айтема ресайклра взять информацию о нажатом айтеме
+//    fun handleItemClick(item: HotdogDataClass) { // не знаю как из айтема ресайклра взять информацию о нажатом айтеме
 //
 //    }
 

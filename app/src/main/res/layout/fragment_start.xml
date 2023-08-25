@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".StartFragment">
+    tools:context=".ui.StartFragment">
     <!--сделала разметку как у гугл, и больше нет constraints, почему?-->
 
     <data>
         <variable
             name="startFragment"
-            type="ru.alexkubrick.hotdog.StartFragment" />
+            type="ru.alexkubrick.hotdog.ui.StartFragment" />
     </data>
 
     <ScrollView

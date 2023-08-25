@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ru.alexkubrick.hotdog
+package ru.alexkubrick.hotdog.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +22,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import ru.alexkubrick.hotdog.R
 import ru.alexkubrick.hotdog.databinding.FragmentPickupBinding
 import ru.alexkubrick.hotdog.model.HotdogOrderViewModel
 

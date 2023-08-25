@@ -8,11 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.alexkubrick.hotdog.R
-import ru.alexkubrick.hotdog.model.Hotdog
+import ru.alexkubrick.hotdog.data.HotdogDataClass
 
 class ItemAdapter(
     private val context: Context,
-    private val dataset: List<Hotdog>
+    private val dataset: List<HotdogDataClass>
 ): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>()  {
     private var onClickListener: OnClickListener? = null
 
@@ -49,6 +49,6 @@ class ItemAdapter(
 
     // onClickListener Interface
     interface OnClickListener {
-        fun onClick(position: Int, model: Hotdog)
+        fun onClick(position: Int, model: HotdogDataClass)
     }
 }

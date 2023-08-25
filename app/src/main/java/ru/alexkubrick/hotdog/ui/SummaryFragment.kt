@@ -1,4 +1,4 @@
-package ru.alexkubrick.hotdog
+package ru.alexkubrick.hotdog.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import ru.alexkubrick.hotdog.R
 import ru.alexkubrick.hotdog.databinding.FragmentSummaryBinding
 import ru.alexkubrick.hotdog.model.HotdogOrderViewModel
 

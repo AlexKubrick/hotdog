@@ -1,9 +1,9 @@
-package ru.alexkubrick.hotdog.model
+package ru.alexkubrick.hotdog.data
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
-data class Hotdog(
+data class HotdogDataClass(
     @StringRes val stringResourceId: Int,
     @DrawableRes val imageResourceId: Int
 )
