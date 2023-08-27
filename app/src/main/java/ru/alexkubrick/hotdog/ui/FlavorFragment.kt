@@ -5,22 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import ru.alexkubrick.hotdog.R
-import ru.alexkubrick.hotdog.adapter.ItemAdapter
+import ru.alexkubrick.hotdog.adapter.FlavorAdapter
+import ru.alexkubrick.hotdog.data.HotdogDataClass
 import ru.alexkubrick.hotdog.data.RecyclerData
 import ru.alexkubrick.hotdog.databinding.FragmentFlavorBinding
-import ru.alexkubrick.hotdog.data.HotdogDataClass
+import ru.alexkubrick.hotdog.model.HotdogOrderViewModel
 
 
 class FlavorFragment : Fragment() {
     private var binding: FragmentFlavorBinding? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val sharedViewModel: HotdogOrderViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,19 +33,18 @@ class FlavorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val hotdogList = RecyclerData().loadHotDog()
-        val itemAdapter = ItemAdapter(requireContext(), hotdogList)
+        val itemAdapter = FlavorAdapter(requireContext(), hotdogList)
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycleView) // возможно ли переписать эту строку через binding?
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        // adapter instance is set to the
-        // recyclerview to inflate the items.
-        recyclerView.adapter = itemAdapter
-
-        itemAdapter.setOnClickListener(object : ItemAdapter.OnClickListener {
-            override fun onClick(position: Int, model: HotdogDataClass) {
-                // Navigate to the next screen (fragment)
+        itemAdapter.setOnClickListener(object : FlavorAdapter.OnClickListener {
+            override fun onClick(text: String, model: HotdogDataClass) {
+                sharedViewModel.setFlavor(text)
                 findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
             }
         })
+
+        binding?.recycleView?.apply { 
+            layoutManager = LinearLayoutManager(context)
+            adapter = itemAdapter
+        }
     }
 }

@@ -49,6 +49,12 @@ class PickupFragment : Fragment() {
             viewModel = sharedViewModel
             pickupFragment = this@PickupFragment
 
+            pickupNext.setOnClickListener {
+                goToNextScreen()
+            }
+            pickupCancel.setOnClickListener {
+                cancelOrder()
+            }
         }
     }
 

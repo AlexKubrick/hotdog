@@ -10,36 +10,33 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.alexkubrick.hotdog.R
 import ru.alexkubrick.hotdog.data.HotdogDataClass
 
-class ItemAdapter(
+class FlavorAdapter(
     private val context: Context,
     private val dataset: List<HotdogDataClass>
-): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>()  {
+): RecyclerView.Adapter<FlavorAdapter.FlavorHolder>()  {
     private var onClickListener: OnClickListener? = null
 
-    class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+    class FlavorHolder(view: View): RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.order_name)
         val imageView: ImageView = view.findViewById(R.id.item_image)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlavorHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.items_list, parent, false)
 
-        return ItemViewHolder(adapterLayout)
+        return FlavorHolder(adapterLayout)
     }
 
     override fun getItemCount() = dataset.size
-
-
-    override fun onBindViewHolder(holder: ItemAdapter.ItemViewHolder, position: Int) {
+    
+    override fun onBindViewHolder(holder: FlavorHolder, position: Int) {
         val item = dataset[position]
-        holder.textView.text = context.resources.getString(item.stringResourceId)
+        holder.textView.text = context.getString(item.stringResourceId)
         holder.imageView.setImageResource(item.imageResourceId)
 
         holder.itemView.setOnClickListener {
-            if (onClickListener != null) {
-                onClickListener!!.onClick(position, item )
-            }
+            onClickListener?.onClick(context.getString(item.stringResourceId), item)
         }
     }
     // A function to bind the onclickListener.
@@ -49,6 +46,6 @@ class ItemAdapter(
 
     // onClickListener Interface
     interface OnClickListener {
-        fun onClick(position: Int, model: HotdogDataClass)
+        fun onClick(text: String, model: HotdogDataClass)
     }
 }
