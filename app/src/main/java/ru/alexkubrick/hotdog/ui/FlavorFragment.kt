@@ -33,14 +33,11 @@ class FlavorFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val hotdogList = RecyclerData().loadHotDog()
-        val itemAdapter = FlavorAdapter(requireContext(), hotdogList)
+        val itemAdapter = FlavorAdapter(requireContext(), hotdogList) { flavor ->
+            sharedViewModel.setFlavor(flavor)
+            findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
+        }
 
-        itemAdapter.setOnClickListener(object : FlavorAdapter.OnClickListener {
-            override fun onClick(text: String, model: HotdogDataClass) {
-                sharedViewModel.setFlavor(text)
-                findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
-            }
-        })
 
         binding?.recycleView?.apply { 
             layoutManager = LinearLayoutManager(context)

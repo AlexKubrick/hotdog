@@ -12,9 +12,9 @@ import ru.alexkubrick.hotdog.data.HotdogDataClass
 
 class FlavorAdapter(
     private val context: Context,
-    private val dataset: List<HotdogDataClass>
+    private val dataset: List<HotdogDataClass>,
+    private val onClick: (flavor: String) -> Unit
 ): RecyclerView.Adapter<FlavorAdapter.FlavorHolder>()  {
-    private var onClickListener: OnClickListener? = null
 
     class FlavorHolder(view: View): RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.order_name)
@@ -36,16 +36,7 @@ class FlavorAdapter(
         holder.imageView.setImageResource(item.imageResourceId)
 
         holder.itemView.setOnClickListener {
-            onClickListener?.onClick(context.getString(item.stringResourceId), item)
+            onClick(context.getString(item.stringResourceId))
         }
-    }
-    // A function to bind the onclickListener.
-    fun setOnClickListener(onClickListener: OnClickListener) {
-        this.onClickListener = onClickListener
-    }
-
-    // onClickListener Interface
-    interface OnClickListener {
-        fun onClick(text: String, model: HotdogDataClass)
     }
 }
